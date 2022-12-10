@@ -9,3 +9,5 @@ code for cross-validation and the grid search
 **base_lineRF.py:** Source code for the baseline model that was used as a comparison.
 
 **img:**: this folder contains some of the images that were used in the report such as the confusion matrix and the bar plot of the most important features
+
+**Latex Files:** File to contain the Latex files for both the proposal and final report
