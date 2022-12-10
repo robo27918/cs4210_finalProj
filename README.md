@@ -1,4 +1,5 @@
-# cs4210_finalProj
+# Determining Most Important Features from Depression Survey using Random Forest Classifier
+
 **DataExploration.ipynb:** Here you will find the different source code for the various plots. Not all were used in the final report
 
 **Depression_RFC_V3.py:** The source code for our actual model that was used to find the most important features from our dataset. Here you will also find the
