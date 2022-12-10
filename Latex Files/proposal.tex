@@ -1,0 +1,96 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Depression Prediction Using Random Forest Classifer\\}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Nathan Pham}
+\IEEEauthorblockA{\textit{College of Science} \\
+\textit{California State Polytechnic University, Pomona}\\
+Pomona, USA \\
+nathanpham@cpp.edu}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Roberto S. Toribio}
+\IEEEauthorblockA{\textit{College of Science} \\
+\textit{California State Polytechnic University, Pomona}\\
+Pomona, USA\\
+rstoribio@cpp.edu}
+
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Rida Siddiqui}
+\IEEEauthorblockA{\textit{College of Science} \\
+\textit{California State Polytechnic University, Pomona}\\
+Pomona, USA\\
+rsiddiqui@cpp.edu}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Ly Hoang}
+\IEEEauthorblockA{\textit{College of Science} \\
+\textit{California State Polytechnic University, Pomona}\\
+Pomona, USA\\
+lhrivera@cpp.edu}
+
+}
+
+\maketitle
+
+\begin{abstract}
+%(Questions for professor are in parenthesis)
+Depression is a mental illness that causes persistent feelings of sadness. It can have negative effects on one's thinking, behavior, and physical health. Because of these negative effects on humans, we want to analyze some reasons that lead to depression. The objective is to identify which of the attributes from a data set contribute the most to an individual developing depression. This data set has a total of 1429 instances and 23 attributes related to depression. Specifically, this data set is derived from a study about the living conditions of people living in rural zones in Saiya County, Kenya. The algorithm to be used is the Random Forest classifier, and an F1-score will be calculated instead of accuracy to measure the performance of the algorithm. The class labels are binary, specifically, the labels are depression or no depression. We expect the most influential features to be marital status, the size of the household, incoming salary, living expenses, gained assets, durable assets, and saved assets. 
+
+
+
+\end{abstract}
+
+\section{Introduction}
+Depression is a mental illness that is characterized by deep and long-lasting feelings of sadness. Depression can negatively affect one's thinking, behavior, and physical health. Because of these negative effects on humans, we wants to analyze some reasons that lead to depression such as marital state, education level, and financial state. In other words, our objective is to identify which of the attributes from a data set contribute the most to an individual developing depression. The data set comes from a study done regarding depression in 2015 in rural Siaya County in Western Kenya. The data set consists of 23 features and 1429 samples. A Random Forest Classifier will be used, adjusting its hyper-parameters via a grid search to create a model.
+
+\section{Data Set To Be Used}
+The data set that is to be used analyzes factors that contribute to depression. It has 23 features and 1429 samples. This data set comes from a 2015 study conducted by the Busara Center in rural Siaya County, near Lake Victoria in western Kenya. Some attributes are age, number of children, education level, total family members, and living expenses. The class labels are binary. Specifically, the label is either "has depression" (positive) or "no depression" (negative). There are 238 positive labels and 1191 negative labels. The ratio of positive to negative labels is 19.98\%, showing that the data set has a moderate class imbalance.
+
+
+\section{Methodology}
+A Random Forest Classifier will be used to train the dataset. Random forest is an algorithm that can be used in both classification and regression problems and consists of many decision trees, each of which gives some results. This algorithm gives better results when there is a higher number of trees in the forest and prevents the model from overfitting.  
+
+Random forest ensures that the behavior of each tree is not too correlated with the behavior of any of the other trees in the model through Bagging (Bootstrap Aggregation). Decisions trees are very sensitive to the data set meaning that small changes to the training set can result in significantly different models. Random forest uses this to its advantage by allowing each tree to randomly sample from the data set with replacement, resulting in different trees. These trees are then merged to get a more accurate and stable prediction.
+
+For the model, 70\% of the original data will be used for training data and the other 30\%  will be used for testing purposes. A model validation technique will be applied called the K-Fold Cross Validation technique. The value for our K will be 10.
+
+To measure the model's performance, the F1-score will be calculated instead of its accuracy. Since the data set has moderate class imbalance, calculating the accuracy will be misleading because the model will not detect any positive samples. The F1 score is a better technique to measure the model's performance since it is the harmonic mean of precision and recall, which tends to be closer to the smaller of the numbers.
+
+To maximize the F1-Score, a grid search will be used with different hyperparameters of the Random Forest Classifier. The hyperparameters to be determined include the number of trees in the forest (n estimators), criterion (gini, entropy, log loss), and the number of levels of the trees (max depth). There is a trade-off between performance and computations depending on the hyperparameters chosen. Increasing the numbers of trees, quality of a decision split, and the level of depth will create a better model at the expense of the time it will take to create the model.
+
+\textbf{}
+
+
+
+
+
+% Notes for Methodology section:
+% Since there is a class imbalance in the data set, we will calculate the F1-score instead of accuracy. The reason being that accuracy is misleading in cases where there is a class imbalance since the model does not detect any positive samples. The F1 score is a better validation technique since it is the harmonic mean of precision and recall, and the harmonic mean of two numbers tends to be closer to the smaller of the two numbers. 
+
+
+% Notes for training/test samples and model validation
+% We will take 70\% of our original data to be the training data. Another 30\% of our data will be used for testing purposes. The model validation technique that we will use is Leave-One Cross Validation technique. The reasoning behind this is that our data set is relatively small with only 1429 samples. Thus, using LOOCV will allow us to use more training samples with each iteration. 
+
+
+% Notes for Hyperparameters:
+% To maximize our F1-Score we will conduct a grid search through different hyperparameters of the Random Forest Classifier. Some of the hyper-parameters we will search through include the number of trees in the forest (n estimators), criterion (gini, entropy, log loss), and the number of levels we will grow our trees (max depth). 
+
+% max depth: we want to use max depth to ensure that the program is not too slow. Since Random Forest consists of many decision trees, it is beneficial to ensure that decision tree is not too large and program is faster.
+
+% number of trees in the forest (n estimators), criterion (gini, entropy, log loss) ?
+
+
+\section*{References}
+[1] Busara Center for Behavioral Economics, Busara Mental Health Prediction Challenge Dataset, Siaya County, Kenya: Busara Center for Behavioral Economics, 2015. [Online]. Available: https://www.kaggle.com/datasets/diegobabativa/depression [Accessed: October 15, 2020]
+
+\end{document}
